@@ -9,11 +9,13 @@ User_Input = input(" Hey , Please enter Number of days \n")
 
 
 def days_to_units(number_of_days):
-    if number_of_days < 0:
-        return "no negative value is allowed"
-    elif number_of_days == 0:
-        return " you entered 0 Please Enter only valid numbers"
-    else:
+    try:
+        if number_of_days < 0:
+            return "no negative value is allowed"
+        elif number_of_days == 0:
+            return " you entered 0 Please Enter only valid numbers"
+
+    except ValueError:
         return f"{number_of_days} {Name_Of_Unit_to_be_converted} = {Calculation_To_Units * number_of_days} {Name_Of_Unit}"
 
 
