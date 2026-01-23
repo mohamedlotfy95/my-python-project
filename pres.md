@@ -4,17 +4,6 @@ At the beginning of the research, I had a call with Brend, during which we agree
 
 
 
-### **Why Switch to Gateway API**
-
-The **Ingress API** is Kubernetes’ standard way to handle external HTTP/HTTPS traffic for services. It is widely used and supported, with many Ingress controllers available. Cloud-native tools like **cert-manager** and **ExternalDNS** also work with it.
-
-However, the Ingress API has some limitations:
-
-* **Limited features:** It only handles TLS termination and basic HTTP request routing.
-* **Depends on annotations:** Each Ingress controller uses its own extensions, which makes it hard to move configurations between controllers.
-* **Weak permission model:** It is not ideal for clusters shared by multiple teams because it doesn’t provide fine-grained access control for load balancing.
-
-
 
 The solution must meet the following requirements:
 
@@ -56,8 +45,15 @@ Other ingress and gateway solutions, such as Envoy Gateway, Contour, Kong, HAPro
 
 For environments running both AKS and RKE2 that require full Gateway API support, long-term stability, and modern traffic capabilities like AI agent communication, **Traefik in Gateway API mode** is the best choice. It is integrated with RKE2, easy to enable, free, and well-supported by both Rancher and Traefik Labs.
 
-**Other options:**
+### **Why Switch to Gateway API**
 
-* **Envoy Gateway:** Strong second choice with excellent Gateway API support and CNCF backing, but requires manual installation and lacks Rancher integration.
-* **Cilium Ingress:** Powerful if Cilium is already used as the CNI, but migration requires more effort.
-* **Contour:** Reliable, but ranks lower due to manual setup and lack of official Rancher support.
+The **Ingress API** is Kubernetes’ standard way to handle external HTTP/HTTPS traffic for services. It is widely used and supported, with many Ingress controllers available. Cloud-native tools like **cert-manager** and **ExternalDNS** also work with it.
+
+However, the Ingress API has some limitations:
+
+* **Limited features:** It only handles TLS termination and basic HTTP request routing.
+* **Depends on annotations:** Each Ingress controller uses its own extensions, which makes it hard to move configurations between controllers.
+* **Weak permission model:** It is not ideal for clusters shared by multiple teams because it doesn’t provide fine-grained access control for load balancing.
+
+
+
